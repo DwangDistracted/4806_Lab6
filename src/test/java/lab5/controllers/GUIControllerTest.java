@@ -3,7 +3,6 @@ package lab5.controllers;
 import lab5.dao.AddressBookRepo;
 import lab5.model.AddressBook;
 import lab5.model.BuddyInfo;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -29,7 +28,7 @@ public class GUIControllerTest {
 
     @Test
     public void whenInvalidAddressBookIdGetErrorMsg() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/view").param("addrBookId", "0").accept(MediaType.TEXT_HTML))
+        mvc.perform(MockMvcRequestBuilders.get("/").param("addrBookId", "0").accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("error", "Address Book with Id '0' not found"));
     }
@@ -41,7 +40,7 @@ public class GUIControllerTest {
         addrBook1.addBuddy(imaginaryFren);
         given(addressBookRepo.findById(any())).willReturn(java.util.Optional.of(addrBook1));
 
-        mvc.perform(MockMvcRequestBuilders.get("/view").param("addrBookId", "1").accept(MediaType.TEXT_HTML))
+        mvc.perform(MockMvcRequestBuilders.get("/").param("addrBookId", "1").accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("addrBookId", 1L))
                 .andExpect(model().attribute("buddies", imaginaryFren.toString() + "\n"));
@@ -52,7 +51,7 @@ public class GUIControllerTest {
         AddressBook addrBook1 = new AddressBook();
         given(addressBookRepo.findById(any())).willReturn(java.util.Optional.of(addrBook1));
 
-        mvc.perform(MockMvcRequestBuilders.get("/view").param("addrBookId", "1").accept(MediaType.TEXT_HTML))
+        mvc.perform(MockMvcRequestBuilders.get("/").param("addrBookId", "1").accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("addrBookId", 1L))
                 .andExpect(model().attribute("buddies", "No Buddies in Address Book"));
