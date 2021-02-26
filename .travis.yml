@@ -2,4 +2,4 @@ language: java
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
-  app: dwang-heroku-app-name-wooot-ye
+  app: dwang-sysc4806-lab6

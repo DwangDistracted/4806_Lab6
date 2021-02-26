@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56305ce6-1e1f-4411-8e04-3ac50e7be868" name="Default Changelist" comment="Lab 6 Clone from Lab 5">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SYSC 4806 – Lab 6 - JavaScript.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lab 6.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab5.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/README.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SYSC 4806 – Lab 5 - Deploy.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lab5/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab6/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lab5/controllers/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab6/controllers/GUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lab5/controllers/RESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab6/controllers/RESTController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lab5/dao/AddressBookRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab6/dao/AddressBookRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lab5/dao/BuddyInfoRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab6/dao/BuddyInfoRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lab5/model/AddressBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab6/model/AddressBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lab5/model/BuddyInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab6/model/BuddyInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/lab5/controllers/GUIControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lab6/controllers/GUIControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/lab5/model/AddressBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lab6/model/AddressBookTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/lab5/model/BuddyInfoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lab6/model/BuddyInfoTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="56305ce6-1e1f-4411-8e04-3ac50e7be868" name="Default Changelist" comment="Lab 6 Clone from Lab 5" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,6 +56,14 @@
       <option name="presentableId" value="Default" />
       <updated>1614308231160</updated>
     </task>
+    <task id="LOCAL-00001" summary="Lab 6 Clone from Lab 5">
+      <created>1614309725481</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1614309725481</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
