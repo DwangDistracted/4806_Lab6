@@ -46,6 +46,9 @@ public class AddressBook implements Serializable {
     public void removeBuddy(BuddyInfo buddy) {
         buddies.remove(buddy);
     }
+    public void removeBuddy(Long buddyId) {
+        buddies.removeIf(buddy -> buddy.getId() == buddyId);
+    }
 
     public List<BuddyInfo> getBuddies() {
         return buddies;

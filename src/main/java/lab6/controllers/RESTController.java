@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @RestController
 @RequestMapping("api")
 public class RESTController {
-    private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RESTController.class);
 
     @Autowired
     private AddressBookRepo addrBookDAO;

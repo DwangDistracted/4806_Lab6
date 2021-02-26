@@ -1,11 +1,29 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Lab 4</title>
+        <title>Lab 6 Part 1</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
         <p th:text="'Viewing Address Book: ' + ${addrBookId}" />
+        <h3>Address Book Buddies:</h3>
         <p th:text="${buddies}" />
+        <h3>Buddy Control Panel:</h3>
+        <form action="#" th:action="@{/addBuddy}" method="get">
+            <input type="hidden" name="addrBookId" th:value="${addrBookId}"/>
+            <p>Buddy Name: <input type="text" name="buddyName" id="buddyName"/></p>
+            <p>Buddy Address: <input type="text" name="address" id="address"/></p>
+            <p><input type="submit" value="Add Buddy"/></p>
+        </form>
+        <form action="#" th:action="@{/removeBuddy}" method="get">
+            <input type="hidden" name="addrBookId" th:value="${addrBookId}"/>
+            <p>Buddy Id: <input type="text" name="buddyId" id="buddyId"/></p>
+            <p><input type="submit" value="Remove Buddy"/></p>
+        </form>
+        <h3>Address Book Control Panel:</h3>
+        <form action="#" th:action="@{/delete}" method="get">
+            <input type="hidden" name="addrBookId" th:value="${addrBookId}"/>
+            <p><input type="submit" value="Delete Address Book"/></p>
+        </form>
     </body>
 </html>
