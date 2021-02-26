@@ -5,13 +5,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
-        <p>Lab 6 Part 1</p>
+        <h1>Lab 6 Part 1</h1>
         <form action="#" th:action="@{/create}" method="get">
             <p><input type="submit" value="Create New Address Book"/></p>
         </form>
         <form action="#" method="get">
             <p>Address Book Id: <input type="text" name="addrBookId" id="addrBookId"/></p>
             <p><input type="submit" value="View Address Book"/></p>
+        </form>
+        <form action="#" th:action="@{/part2}" method="get">
+            <p><input type="submit" value="See Part 2"/></p>
         </form>
     </body>
 </html>

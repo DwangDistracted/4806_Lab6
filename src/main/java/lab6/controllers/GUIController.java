@@ -22,6 +22,11 @@ public class GUIController {
     @Autowired
     private AddressBookRepo addrBookDAO;
 
+    @GetMapping("part2")
+    public String getPartTwo() {
+        return "Part2";
+    }
+
     @GetMapping()
     public String viewAddressBook(@RequestParam(name = "addrBookId", defaultValue = "-1") Long id, Model model) {
         AtomicReference<String> templateName = new AtomicReference<>();
