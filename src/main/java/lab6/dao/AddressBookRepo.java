@@ -1,6 +1,6 @@
-package lab5.dao;
+package lab6.dao;
 
-import lab5.model.AddressBook;
+import lab6.model.AddressBook;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

@@ -1,9 +1,9 @@
-package lab5.controllers;
+package lab6.controllers;
 
-import lab5.Main;
-import lab5.dao.AddressBookRepo;
-import lab5.model.AddressBook;
-import lab5.model.BuddyInfo;
+import lab6.Main;
+import lab6.dao.AddressBookRepo;
+import lab6.model.AddressBook;
+import lab6.model.BuddyInfo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

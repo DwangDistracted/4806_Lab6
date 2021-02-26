@@ -1,4 +1,4 @@
-package lab5.model;
+package lab6.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,8 +1,8 @@
-package lab5.controllers;
+package lab6.controllers;
 
-import lab5.dao.AddressBookRepo;
-import lab5.model.AddressBook;
-import lab5.model.BuddyInfo;
+import lab6.dao.AddressBookRepo;
+import lab6.model.AddressBook;
+import lab6.model.BuddyInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

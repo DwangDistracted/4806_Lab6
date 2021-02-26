@@ -1,6 +1,6 @@
-package lab5.dao;
+package lab6.dao;
 
-import lab5.model.BuddyInfo;
+import lab6.model.BuddyInfo;
 
 import org.springframework.data.repository.CrudRepository;
 

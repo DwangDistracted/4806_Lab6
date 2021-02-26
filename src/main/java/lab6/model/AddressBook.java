@@ -1,4 +1,4 @@
-package lab5.model;
+package lab6.model;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -21,7 +21,7 @@ public class AddressBook implements Serializable {
 
     @OneToMany()
     @Cascade(CascadeType.ALL)
-    private List<BuddyInfo> buddies;
+    private final List<BuddyInfo> buddies;
 
     public AddressBook() {
         buddies = new ArrayList<>();
@@ -71,7 +71,7 @@ public class AddressBook implements Serializable {
         if (buddies.size() == 0) {
             contents.append("\tEMPTY");
         } else {
-            buddies.forEach(bud -> contents.append("\t" + bud.toString() + ","));
+            buddies.forEach(bud -> contents.append("\t").append(bud.toString()).append(","));
             contents.replace(contents.length()-1, contents.length(), "");
         }
 

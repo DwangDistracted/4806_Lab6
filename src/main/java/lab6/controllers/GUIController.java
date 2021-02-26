@@ -1,7 +1,7 @@
-package lab5.controllers;
+package lab6.controllers;
 
-import lab5.dao.AddressBookRepo;
-import lab5.model.AddressBook;
+import lab6.dao.AddressBookRepo;
+import lab6.model.AddressBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,9 +31,9 @@ public class GUIController {
                         if (addressBook.getBuddies().size() == 0) {
                             addrBookBuddies.append("No Buddies in Address Book");
                         } else {
-                            addressBook.getBuddies().forEach(bud -> {
-                                addrBookBuddies.append(bud.toString() + "\n");
-                            });
+                            addressBook.getBuddies().forEach(bud ->
+                                addrBookBuddies.append(bud.toString()).append("\n")
+                            );
                         }
 
                         model.addAttribute("addrBookId", id);
