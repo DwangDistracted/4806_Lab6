@@ -3,20 +3,141 @@
     <head>
         <title>Lab 6 Part 2</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="part2.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            var addrBookId = -1;
+            $(document).ready(function() {
+                // register handler
+                $("#createForm").submit(event => {
+                    event.preventDefault();
+                    console.log("Creating Address Book");
+                    $.ajax({
+                        url: "api/addrBook",
+                        type: "POST",
+                        success: response => {
+                            console.log(response);
+                            addrBookId = response.addrBookId;
+                            displayAddressBook(addrBookId, "No Buddies in Address Book");
+                        }
+                    });
+                });
+                $("#viewForm").submit(event => {
+                    event.preventDefault();
+                    console.log("Viewing Address Book");
+                    addrBookId = $("#addrBookId").val();
+                    $.ajax({
+                        url: "api/addrBook?addrBookId="+addrBookId,
+                        type: "GET",
+                        success: response => {
+                            console.log(response);
+                            displayAddressBook(response.addrBookId, response.message);
+                        }
+                    });
+                });
+                $("#addBuddyForm").submit(event => {
+                    event.preventDefault();
+                    console.log("Adding Buddy to Address Book " + addrBookId);
+                    let buddyName = $("#buddyName").val();
+                    let buddyAddress = $("#address").val();
+                    $.ajax({
+                        url: "api/buddy?addrBookId="+addrBookId+"&name="+buddyName+"&address="+buddyAddress,
+                        type: "PUT",
+                        success: response => {
+                            console.log(response);
+                            $.ajax({
+                                url: "api/addrBook?addrBookId="+addrBookId,
+                                type: "GET",
+                                success: response => {
+                                    console.log(response);
+                                    displayAddressBook(response.addrBookId, response.message);
+                                }
+                            });
+                        }
+                    });
+                });
+                $("#removeBuddyForm").submit(event => {
+                    event.preventDefault();
+                    console.log("Removing Buddy from Address Book " + addrBookId);
+                    let buddyName = $("#buddyNameDelete").val();
+                    let buddyAddress = $("#addressDelete").val();
+                    $.ajax({
+                        url: "api/buddy?addrBookId="+addrBookId+"&name="+buddyName+"&address="+buddyAddress,
+                        type: "DELETE",
+                        success: response => {
+                            console.log(response);
+                            $.ajax({
+                                url: "api/addrBook?addrBookId="+addrBookId,
+                                type: "GET",
+                                success: response => {
+                                    console.log(response);
+                                    displayAddressBook(response.addrBookId, response.message);
+                                }
+                            });
+                        }
+                    });
+                });
+                $("#deleteBookForm").submit(event => {
+                    event.preventDefault();
+                    console.log("Deleting Address Book " + addrBookId);
+                    $.ajax({
+                        url: "api/addrBook?addrBookId="+addrBookId,
+                        type: "DELETE",
+                        success: response => {
+                            console.log(response);
+                            addrBookId = -1;
+                            $("#addrBookView").hide();
+                        }
+                    });
+                });
+            });
+
+            displayAddressBook = function (addrBookId, buddies) {
+                console.log("Viewing AddressBook " + addrBookId + " with buddies " + buddies);
+
+                $("#addrBookViewId").text("Viewing AddressBook " + addrBookId);
+                $("#addrBookViewBuddies").text(buddies);
+
+                $("#addrBookView").show();
+            }
+        </script>
     </head>
     <body>
         <h1>Lab 6 Part 2</h1>
-        <form action="#" th:action="@{~/}" method="get">
+        <form action="#" th:action="@{~/}" method="get" id="createForm">
             <input type="hidden" name="operation" value="create"/>
             <p><input type="submit" value="Create New Address Book"/></p>
         </form>
-        <form action="#" th:action="@{~/}" method="get">
+        <form action="#" th:action="@{~/}" method="get" id="viewForm">
             <input type="hidden" name="operation" value="view"/>
             <p>Address Book Id: <input type="text" name="addrBookId" id="addrBookId"/></p>
             <p><input type="submit" value="View Address Book"/></p>
         </form>
+        <div id="addrBookView" hidden>
+            <h1 id="addrBookViewId"></h1>
+            <h3>Address Book Buddies:</h3>
+            <p id="addrBookViewBuddies"></p>
+            <h3>Buddy Control Panel:</h3>
+            <form action="#" method="get" id="addBuddyForm">
+                <input type="hidden" name="operation" value="addBuddy"/>
+                <input type="hidden" name="addrBookId" th:value="${addrBookId}"/>
+                <p>Buddy Name: <input type="text" name="buddyName" id="buddyName"/></p>
+                <p>Buddy Address: <input type="text" name="address" id="address"/></p>
+                <p><input type="submit" value="Add Buddy"/></p>
+            </form>
+            <form action="#" method="get" id="removeBuddyForm">
+                <input type="hidden" name="operation" value="removeBuddy"/>
+                <input type="hidden" name="addrBookId" th:value="${addrBookId}"/>
+                <p>Buddy Name: <input type="text" name="buddyName" id="buddyNameDelete"/></p>
+                <p>Buddy Address: <input type="text" name="address" id="addressDelete"/></p>
+                <p><input type="submit" value="Remove Buddy"/></p>
+            </form>
+            <h3>Address Book Control Panel:</h3>
+            <form action="#" method="get" id="deleteBookForm">
+                <input type="hidden" name="operation" value="delete"/>
+                <input type="hidden" name="addrBookId" th:value="${addrBookId}"/>
+                <p><input type="submit" value="Delete Address Book"/></p>
+            </form>
+        </div>
         <form action="#" th:action="@{~/}" method="get">
             <p><input type="submit" value="See Part 1"/></p>
         </form>
