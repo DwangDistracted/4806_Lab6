@@ -1,10 +1,22 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Lab 6 Part 2</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="part2.js"></script>
     </head>
     <body>
         <h1>Lab 6 Part 2</h1>
+        <form action="#" method="get">
+            <p><input type="submit" value="Create New Address Book"/></p>
+        </form>
+        <form action="#" method="get">
+            <p>Address Book Id: <input type="text" name="addrBookId" id="addrBookId"/></p>
+            <p><input type="submit" value="View Address Book"/></p>
+        </form>
+        <form action="#" th:action="@{/part1}" method="get">
+            <p><input type="submit" value="See Part 1"/></p>
+        </form>
     </body>
 </html>

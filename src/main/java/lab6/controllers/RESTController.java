@@ -1,6 +1,5 @@
 package lab6.controllers;
 
-import lab6.Main;
 import lab6.dao.AddressBookRepo;
 import lab6.model.AddressBook;
 import lab6.model.BuddyInfo;
@@ -10,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -43,6 +44,26 @@ public class RESTController {
             addrBookDAO.deleteById(id);
         }
         return new RestResponse("Deleted", id);
+    }
+
+    @GetMapping(path = "addrBook", produces = MediaType.APPLICATION_JSON_VALUE)
+    public RestResponse getAddressBookBuddies(@RequestParam(name = "addrBookId") Long id) {
+        LOG.info("Getting AddressBook Buddies: " + id);
+        Optional<AddressBook> addressBook = addrBookDAO.findById(id);
+
+        AtomicReference<RestResponse> restResponse = new AtomicReference<>();
+        addressBook.ifPresentOrElse(
+            addrBook -> {
+                List<BuddyInfo> buddies = addrBook.getBuddies();
+                if (buddies.isEmpty()) {
+                    restResponse.set(new RestResponse("No Buddies in Address Book", id));
+                } else {
+                    restResponse.set(new RestResponse(buddies.toString(), id));
+                }
+            },
+            () -> restResponse.set(new RestResponse("Address Book Not Found", id))
+        );
+        return restResponse.get();
     }
 
     @PutMapping(path = "buddy", produces = MediaType.APPLICATION_JSON_VALUE)

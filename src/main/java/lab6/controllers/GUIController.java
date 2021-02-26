@@ -22,6 +22,11 @@ public class GUIController {
     @Autowired
     private AddressBookRepo addrBookDAO;
 
+    @GetMapping("part1")
+    public String getPartOne() {
+        return "Select";
+    }
+
     @GetMapping("part2")
     public String getPartTwo() {
         return "Part2";
