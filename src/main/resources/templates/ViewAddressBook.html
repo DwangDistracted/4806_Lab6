@@ -9,19 +9,22 @@
         <h3>Address Book Buddies:</h3>
         <p th:text="${buddies}" />
         <h3>Buddy Control Panel:</h3>
-        <form action="#" th:action="@{/addBuddy}" method="get">
+        <form action="#" method="get">
+            <input type="hidden" name="operation" value="addBuddy"/>
             <input type="hidden" name="addrBookId" th:value="${addrBookId}"/>
             <p>Buddy Name: <input type="text" name="buddyName" id="buddyName"/></p>
             <p>Buddy Address: <input type="text" name="address" id="address"/></p>
             <p><input type="submit" value="Add Buddy"/></p>
         </form>
-        <form action="#" th:action="@{/removeBuddy}" method="get">
+        <form action="#" method="get">
+            <input type="hidden" name="operation" value="removeBuddy"/>
             <input type="hidden" name="addrBookId" th:value="${addrBookId}"/>
             <p>Buddy Id: <input type="text" name="buddyId" id="buddyId"/></p>
             <p><input type="submit" value="Remove Buddy"/></p>
         </form>
         <h3>Address Book Control Panel:</h3>
-        <form action="#" th:action="@{/delete}" method="get">
+        <form action="#" method="get">
+            <input type="hidden" name="operation" value="delete"/>
             <input type="hidden" name="addrBookId" th:value="${addrBookId}"/>
             <p><input type="submit" value="Delete Address Book"/></p>
         </form>

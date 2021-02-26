@@ -8,14 +8,16 @@
     </head>
     <body>
         <h1>Lab 6 Part 2</h1>
-        <form action="#" method="get">
+        <form action="#" th:action="@{~/}" method="get">
+            <input type="hidden" name="operation" value="create"/>
             <p><input type="submit" value="Create New Address Book"/></p>
         </form>
-        <form action="#" method="get">
+        <form action="#" th:action="@{~/}" method="get">
+            <input type="hidden" name="operation" value="view"/>
             <p>Address Book Id: <input type="text" name="addrBookId" id="addrBookId"/></p>
             <p><input type="submit" value="View Address Book"/></p>
         </form>
-        <form action="#" th:action="@{/part1}" method="get">
+        <form action="#" th:action="@{~/}" method="get">
             <p><input type="submit" value="See Part 1"/></p>
         </form>
     </body>

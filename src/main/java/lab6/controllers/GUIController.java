@@ -2,14 +2,12 @@ package lab6.controllers;
 
 import lab6.dao.AddressBookRepo;
 import lab6.model.AddressBook;
-import lab6.model.BuddyInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
@@ -33,6 +31,26 @@ public class GUIController {
     }
 
     @GetMapping()
+    public String handleRequest(@RequestParam(name = "operation", defaultValue = "none") String operation,
+                                @RequestParam(name = "addrBookId", defaultValue = "-1") Long addrBookId,
+                                @RequestParam(name = "buddyId", defaultValue = "-1") Long buddyId,
+                                @RequestParam(name = "buddyName", required = false) String buddyName,
+                                @RequestParam(name = "address", required = false) String buddyAddress, Model model) {
+        if (operation.equals("view")) {
+            return viewAddressBook(addrBookId, model);
+        } else if (operation.equals("create")) {
+            return createAddressBookForPart1(model);
+        } else if (operation.equals("addBuddy")) {
+            return addBuddyForPart1(addrBookId, buddyName, buddyAddress, model);
+        } else if (operation.equals("removeBuddy")) {
+            return removeBuddyForPart1(addrBookId, buddyId, model);
+        } else if (operation.equals("delete")) {
+            return deleteAddressBookForPart1(addrBookId);
+        } else {
+            return "Select";
+        }
+    }
+
     public String viewAddressBook(@RequestParam(name = "addrBookId", defaultValue = "-1") Long id, Model model) {
         AtomicReference<String> templateName = new AtomicReference<>();
 
@@ -53,7 +71,6 @@ public class GUIController {
         return templateName.get();
     }
 
-    @GetMapping(path = "create")
     public String createAddressBookForPart1(Model model) {
         LOG.info("Creating AddressBook");
         AddressBook addrBook = new AddressBook();
@@ -64,7 +81,6 @@ public class GUIController {
         return "ViewAddressBook";
     }
 
-    @GetMapping(path = "addBuddy")
     public String addBuddyForPart1(@RequestParam(name = "addrBookId", defaultValue = "-1") Long addrBookId,
                                    @RequestParam(name = "buddyName") String buddyName,
                                    @RequestParam(name = "address") String buddyAddress, Model model) {
@@ -83,7 +99,6 @@ public class GUIController {
         }
     }
 
-    @GetMapping(path = "removeBuddy")
     public String removeBuddyForPart1(@RequestParam(name = "addrBookId", defaultValue = "-1") Long addrBookId,
                                       @RequestParam(name = "buddyId", defaultValue = "-1") Long buddyId, Model model) {
         LOG.info("Removing Buddy from AddressBook:" + addrBookId);
@@ -101,15 +116,12 @@ public class GUIController {
         }
     }
 
-    @GetMapping(path = "delete")
-    public String deleteAddressBookForPart1(@RequestParam(name = "addrBookId", defaultValue = "-1") Long addrBookId, Model model) {
+    public String deleteAddressBookForPart1(@RequestParam(name = "addrBookId", defaultValue = "-1") Long addrBookId) {
         LOG.info("Deleting AddressBook");
-        if (addrBookId == -1 ) {
-            return "Select";
-        } else {
+        if (!addrBookDAO.existsById(addrBookId)) {
             addrBookDAO.deleteById(addrBookId);
-            return "Select";
         }
+        return "Select";
     }
 
     private String renderAddressBookBuddies(AddressBook addressBook) {

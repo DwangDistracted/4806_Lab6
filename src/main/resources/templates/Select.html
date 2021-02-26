@@ -6,10 +6,12 @@
     </head>
     <body>
         <h1>Lab 6 Part 1</h1>
-        <form action="#" th:action="@{/create}" method="get">
+        <form action="#" method="get">
+            <input type="hidden" name="operation" value="create"/>
             <p><input type="submit" value="Create New Address Book"/></p>
         </form>
         <form action="#" method="get">
+            <input type="hidden" name="operation" value="view"/>
             <p>Address Book Id: <input type="text" name="addrBookId" id="addrBookId"/></p>
             <p><input type="submit" value="View Address Book"/></p>
         </form>
